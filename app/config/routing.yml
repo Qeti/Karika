@@ -1,0 +1,8 @@
+app_product_api:
+    resource: "@AppBundle/Controller/ProductRESTController.php"
+    type:   rest
+    prefix:   /api
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
