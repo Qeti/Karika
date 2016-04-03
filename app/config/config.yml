@@ -100,3 +100,10 @@ sensio_framework_extra:
     request: { converters: true }
     view:    { annotations: false }
     router:  { annotations: true }
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        AppBundle\Entity\Client
+    access_token_class:  AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class:     AppBundle\Entity\AuthCode

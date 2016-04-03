@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Voryx\RESTGeneratorBundle\Controller\VoryxController;
 
@@ -84,6 +85,8 @@ class ProductRESTController extends VoryxController
      */
     public function postAction(Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entity = new Product();
         $form = $this->createForm(self::FORM, $entity, array("method" => $request->getMethod()));
         $this->removeExtraFields($request, $form);
@@ -111,6 +114,8 @@ class ProductRESTController extends VoryxController
      */
     public function putAction(Request $request, Product $entity)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
@@ -140,6 +145,7 @@ class ProductRESTController extends VoryxController
      */
     public function patchAction(Request $request, Product $entity)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         return $this->putAction($request, $entity);
     }
     /**
@@ -154,6 +160,7 @@ class ProductRESTController extends VoryxController
      */
     public function deleteAction(Request $request, Product $entity)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         try {
             $em = $this->getDoctrine()->getManager();
             $em->remove($entity);

@@ -22,3 +22,21 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+        oauth_token:
+            pattern:    ^/oauth/v2/token
+            security:   false
+
+        oauth_authorize:
+            pattern:    ^/oauth/v2/auth
+            anonymous: true
+            # Add your favorite authentication process here
+
+        api:
+            pattern:    ^/api
+            fos_oauth:  true
+            stateless:  true
+            anonymous:  true # can be omitted as its default value
+
+#    access_control:
+#        - { path: ^/api, roles: [ IS_AUTHENTICATED_FULLY ] }
