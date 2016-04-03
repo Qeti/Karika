@@ -38,5 +38,5 @@ security:
             stateless:  true
             anonymous:  true # can be omitted as its default value
 
-#    access_control:
-#        - { path: ^/api, roles: [ IS_AUTHENTICATED_FULLY ] }
+    access_control:
+        - { path: ^/api/products, methods: [POST, PUT, DELETE], roles: [ IS_AUTHENTICATED_FULLY ] }

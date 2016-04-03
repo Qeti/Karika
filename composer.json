@@ -23,7 +23,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "symfony/console": "^3.0",
         "voryx/restgeneratorbundle": "dev-master",
-        "friendsofsymfony/oauth-server-bundle": "^1.5"
+        "friendsofsymfony/oauth-server-bundle": "^1.5",
+        "nelmio/api-doc-bundle": "^2.12"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

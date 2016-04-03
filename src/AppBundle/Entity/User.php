@@ -32,6 +32,14 @@ class User
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $password;
+
+    /**
      * Get id
      *
      * @return int
@@ -63,6 +71,30 @@ class User
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Product
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 
 }

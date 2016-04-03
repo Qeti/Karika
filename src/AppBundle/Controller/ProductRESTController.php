@@ -17,8 +17,8 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
 use Voryx\RESTGeneratorBundle\Controller\VoryxController;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
  * Product controller.
@@ -31,6 +31,8 @@ class ProductRESTController extends VoryxController
     /**
      * Get a Product entity
      *
+     * @ApiDoc
+     * 
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
@@ -42,6 +44,8 @@ class ProductRESTController extends VoryxController
     }
     /**
      * Get all Product entities.
+     * 
+     * @ApiDoc
      *
      * @View(serializerEnableMaxDepthChecks=true)
      *
@@ -76,6 +80,8 @@ class ProductRESTController extends VoryxController
     /**
      * Create a Product entity.
      *
+     * @ApiDoc
+     * 
      * @View(statusCode=201, serializerEnableMaxDepthChecks=true)
      *
      * @param Request $request
@@ -85,8 +91,6 @@ class ProductRESTController extends VoryxController
      */
     public function postAction(Request $request)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
         $entity = new Product();
         $form = $this->createForm(self::FORM, $entity, array("method" => $request->getMethod()));
         $this->removeExtraFields($request, $form);
@@ -105,6 +109,8 @@ class ProductRESTController extends VoryxController
     /**
      * Update a Product entity.
      *
+     * @ApiDoc
+     * 
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @param Request $request
@@ -114,8 +120,6 @@ class ProductRESTController extends VoryxController
      */
     public function putAction(Request $request, Product $entity)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
@@ -133,9 +137,12 @@ class ProductRESTController extends VoryxController
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
     /**
      * Partial Update to a Product entity.
      *
+     * @ApiDoc
+     * 
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @param Request $request
@@ -160,7 +167,6 @@ class ProductRESTController extends VoryxController
      */
     public function deleteAction(Request $request, Product $entity)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         try {
             $em = $this->getDoctrine()->getManager();
             $em->remove($entity);
