@@ -40,3 +40,6 @@ security:
 
     access_control:
         - { path: ^/api/products, methods: [POST, PUT, DELETE], roles: [ IS_AUTHENTICATED_FULLY ] }
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt

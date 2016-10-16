@@ -24,11 +24,13 @@
         "symfony/console": "^3.1",
         "voryx/restgeneratorbundle": "dev-master",
         "friendsofsymfony/oauth-server-bundle": "^1.5",
-        "nelmio/api-doc-bundle": "^2.12"
+        "nelmio/api-doc-bundle": "^2.12",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.1"
+        "symfony/phpunit-bridge": "^3.1",
+        "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "scripts": {
         "post-install-cmd": [

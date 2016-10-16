@@ -101,11 +101,18 @@ sensio_framework_extra:
     view:    { annotations: false }
     router:  { annotations: true }
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+
 fos_oauth_server:
     db_driver: orm       # Drivers available: orm, mongodb, or propel
     client_class:        AppBundle\Entity\Client
     access_token_class:  AppBundle\Entity\AccessToken
     refresh_token_class: AppBundle\Entity\RefreshToken
     auth_code_class:     AppBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
 
 nelmio_api_doc: ~
