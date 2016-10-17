@@ -25,7 +25,8 @@
         "voryx/restgeneratorbundle": "dev-master",
         "friendsofsymfony/oauth-server-bundle": "^1.5",
         "nelmio/api-doc-bundle": "^2.12",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/doctrine-migrations-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

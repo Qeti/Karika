@@ -14,7 +14,7 @@ Karika
     ~~~
 1. Install dependencies and setup local environment: `composer install`
 1. Create database manually with PostgreSQL or with command: `php bin/console doctrine:database:create`
-1. Create database schema with command: `php bin/console doctrine:schema:create`
+1. Create database schema with command: `php bin/console doctrine:migrations:migrate`
 1. Setup web server (root directory is `web`)
 1. Open url <karika_url>/api/doc to view methods description.
 1. Optionally for development environment. Fill database with fixtures: `php bin/console doctrine:fixtures:load`
