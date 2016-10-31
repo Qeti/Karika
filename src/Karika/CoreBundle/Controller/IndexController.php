@@ -53,7 +53,7 @@ class IndexController extends Controller
      *
      * Order of actions is important. This action must be last.
      *
-     * @Route("/")
+     * @Route("/{slug}", requirements={"slug" = "[\w\d-_/]*"})
      */
     public function indexAction()
     {

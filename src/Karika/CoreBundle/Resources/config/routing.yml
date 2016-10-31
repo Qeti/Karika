@@ -1,12 +1,3 @@
-app_product_api:
-    resource: "@KarikaCoreBundle/Controller/ProductRESTController.php"
-    type:   rest
-    prefix:   /api
-
-app:
-    resource: "@KarikaCoreBundle/Controller/"
-    type:     annotation
-
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 
@@ -19,3 +10,12 @@ NelmioApiDocBundle:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app_product_api:
+    resource: "@KarikaCoreBundle/Controller/ProductRESTController.php"
+    type:   rest
+    prefix:   /api
+
+karika:
+    resource: "@KarikaCoreBundle/Controller/"
+    type:     annotation
