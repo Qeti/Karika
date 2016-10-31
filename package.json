@@ -1,0 +1,34 @@
+{
+  "name": "karika",
+  "version": "1.0.0",
+  "description": "YA business automatisation system",
+  "scripts": {
+    "release": "gulp release",
+    "dev": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qeti/Karika.git"
+  },
+  "keywords": [
+    "karika",
+    "crm",
+    "business",
+    "bpm"
+  ],
+  "author": "Matiushenkov Nikolay, Matiushenkov Igor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Qeti/Karika/issues"
+  },
+  "homepage": "https://github.com/Qeti/Karika",
+  "devDependencies": {
+    "jsx-loader": "^0.13.2",
+    "material-ui": "^0.16.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-tap-event-plugin": "^1.0.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
