@@ -20,7 +20,7 @@ module.exports = {
 		// reloads browser when the watched files change
 		new BrowserSyncPlugin({
 			// use existing Apache virtual host
-			proxy: 'http://local.react-starter/',
+			proxy: 'http://karika.local/',
 			tunnel: true,
 			// watch the built files and the index file
 			files: ['web/build/*', 'web/app_dev.php']
