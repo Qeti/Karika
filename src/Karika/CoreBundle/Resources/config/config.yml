@@ -37,6 +37,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    paths:
+        "%kernel.root_dir%/../src/Karika/CoreBundle/Resources/views": karika
 
 # Doctrine Configuration
 doctrine:

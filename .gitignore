@@ -16,3 +16,6 @@
 /web/bundles/
 /nbproject/
 /node_modules/
+npm-debug.log
+
+web/build
