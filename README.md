@@ -18,6 +18,8 @@ Karika
 1. Setup web server (root directory is `web`)
 1. Open url <karika_url>/api/doc to view methods description.
 1. Optionally for development environment. Fill database with fixtures: `php bin/console doctrine:fixtures:load`
+1. For development: install node modules with `npm install`
+1. For development: run `npm start`
 
 ## Api documentation
 
