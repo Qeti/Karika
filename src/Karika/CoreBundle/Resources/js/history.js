@@ -5,9 +5,7 @@
  * application.
  */
 
-import createHashHistory from 'history/lib/createHashHistory'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 
-export default createHashHistory({
-	// hide the hash key (e.g. "_k=123abc")
-	queryKey: false
+export default createBrowserHistory({
 });
