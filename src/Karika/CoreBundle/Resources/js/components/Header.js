@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
+import AppBar from 'material-ui/AppBar';
 
 var activeClassName = 'active';
 
@@ -14,6 +15,8 @@ var Header = React.createClass({
 	},
 	render: function() {
 		return (
+            <div>
+            <AppBar title="Karika"/>
 			<nav className="navbar navbar-inverse">
 				<div className="container-fluid">
 					<div className="navbar-header">
@@ -38,6 +41,7 @@ var Header = React.createClass({
 					</div>
 				</div>
 			</nav>
+            </div>
 		);
 	}
 });

@@ -4,7 +4,9 @@ import React from 'react';
 import Header from './Header.js';
 import {} from 'bootstrap/dist/css/bootstrap.css';
 import {} from '../../css/app.css';
-import {} from '../../svg/icons.svg';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 /**
  * Application component
@@ -18,14 +20,16 @@ var App = React.createClass({
 	},
 	render: function() {
 		return (
-			<div>
-				<Header />
-				<div className="container">
-					<div className="row col-sm-12">
-						{this.props.children}
-					</div>
-				</div>
-			</div>
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                <div>
+                    <Header />
+                    <div className="container">
+                        <div className="row col-sm-12">
+                            {this.props.children}
+                        </div>
+                    </div>
+                </div>
+            </MuiThemeProvider>
 		);
 	}
 });

@@ -11,6 +11,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Redirect } from 'react-router';
 import rp from 'request-promise';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import history from './history.js';
 import App from './components/App.js';
 import HomePage from './components/home/HomePage.js';
@@ -19,6 +20,8 @@ import AdminPage from './components/admin/AdminPage.js';
 import { apiUrl } from './constants.js';
 
 console.log('main.js');
+
+injectTapEventPlugin();
 
 function isAdmin() {
 	return rp({
