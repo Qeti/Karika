@@ -21,7 +21,7 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -29,7 +29,7 @@ class Product
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -37,14 +37,14 @@ class Product
      * @ORM\Column(name="price", type="decimal", precision=20, scale=2)
      * @Assert\NotBlank()
      */
-    private $price;
+    protected $price;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=1000)
      */
-    private $description;
+    protected $description;
 
     /**
      * Get id
