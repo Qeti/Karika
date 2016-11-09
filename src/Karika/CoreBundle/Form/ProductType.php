@@ -27,7 +27,7 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Karika\CoreBundle\Entity\Product'
+            'data_class' => 'Karika\CoreBundle\Entity\ProductSuperclass'
         ));
     }
 }

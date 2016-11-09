@@ -4,7 +4,7 @@ namespace Karika\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Karika\CoreBundle\Entity\Product;
+use Karika\CoreBundle\Entity\ProductSuperclass as Product;
 
 class LoadProductData implements FixtureInterface
 {

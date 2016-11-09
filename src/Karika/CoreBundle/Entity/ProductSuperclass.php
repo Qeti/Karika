@@ -8,10 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Product
  *
- * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="Karika\CoreBundle\Repository\ProductRepository")
+ * @ORM\MappedSuperclass
  */
-class Product
+class ProductSuperclass
 {
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Karika\CoreBundle\Controller;
 
-use Karika\CoreBundle\Entity\Product;
+use Karika\CoreBundle\Entity\ProductSuperclass as Product;
 use Karika\CoreBundle\Form\ProductType;
 
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -67,7 +67,8 @@ class ProductRESTController extends VoryxController
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
 
             $em = $this->getDoctrine()->getManager();
-            $entities = $em->getRepository('KarikaCoreBundle:Product')->findBy($filters, $order_by, $limit, $offset);
+            //$entities = $em->getRepository('KarikaCoreBundle:Product')->findBy($filters, $order_by, $limit, $offset);
+            $entities = $this->container->get('karika.repository.product')->findBy($filters, $order_by, $limit, $offset);
             if ($entities) {
                 return $entities;
             }

@@ -9,8 +9,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Product
  *
+ * @ORM\MappedSuperclass
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Karika\CoreBundle\Repository\UserRepository")
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="username",
+ *          column=@ORM\Column(
+ *              length=200
+ *          )
+ *      )
+ * })
+
  */
 class User extends BaseUser
 {
