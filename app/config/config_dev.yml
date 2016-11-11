@@ -1,3 +1,4 @@
 imports:
     - { resource: parameters.yml }
     - { resource: '@KarikaCoreBundle/Resources/config/config_dev.yml' }
+    - { resource: '@KarikaExampleBundle/Resources/config/config_dev.yml' }
