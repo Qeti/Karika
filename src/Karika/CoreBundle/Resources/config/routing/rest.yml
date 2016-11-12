@@ -1,0 +1,4 @@
+karika_product_api:
+    resource: "@KarikaCoreBundle/Controller/ProductRESTController.php"
+    type:   rest
+    prefix:   /api

@@ -1,0 +1,3 @@
+karika:
+    resource: "@KarikaCoreBundle/Controller/"
+    type:     annotation

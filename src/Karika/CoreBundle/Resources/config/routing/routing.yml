@@ -1,0 +1,6 @@
+_vendor:
+    resource: vendor.yml
+
+_rest:
+    resource: rest.yml
+
