@@ -2,6 +2,7 @@
 
 namespace Karika\CoreBundle\Controller;
 
+use FOS\RestBundle\Controller\FOSRestController;
 use Karika\CoreBundle\Entity\ProductSuperclass as Product;
 use Karika\CoreBundle\Form\ProductType;
 
@@ -24,7 +25,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  * Product controller.
  * @RouteResource("Product")
  */
-class ProductRESTController extends VoryxController
+class ProductRESTController extends FOSRestController
 {
     const FORM = ProductType::class;
     
@@ -38,9 +39,17 @@ class ProductRESTController extends VoryxController
      * @return Response
      *
      */
-    public function getAction(Product $entity)
+    public function getAction(int $id)
     {
-        return $entity;
+        try {
+            $entity = $this->container->get('karika.repository.product')->find($id);
+            if ($entity) {
+                return $entity;
+            }
+            return FOSView::create('Not Found', Codes::HTTP_NO_CONTENT);
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
     /**
      * Get all Product entities.
