@@ -123,3 +123,8 @@ doctrine_migrations:
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
+
+karika:
+    entity:
+        product_class: Karika\ExampleBundle\Entity\Product
+        user_class: Karika\ExampleBundle\Entity\User

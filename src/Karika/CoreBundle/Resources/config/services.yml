@@ -7,3 +7,9 @@ services:
 #    service_name:
 #        class: Karika\CoreBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    karika_entity_manager:
+        public: false
+        class: Karika\CoreBundle\Entity\Manager\ApiEntityManager
+        decorates: doctrine.orm.default_entity_manager
+        arguments: ["@karika_entity_manager.inner"]

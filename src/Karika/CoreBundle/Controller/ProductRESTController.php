@@ -3,6 +3,7 @@
 namespace Karika\CoreBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use Karika\CoreBundle\Entity\Manager\ApiEntityManager;
 use Karika\CoreBundle\Entity\ProductSuperclass as Product;
 use Karika\CoreBundle\Form\ProductType;
 
@@ -28,7 +29,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class ProductRESTController extends FOSRestController
 {
     const FORM = ProductType::class;
-    
+
     /**
      * Get a Product entity
      *
@@ -101,18 +102,23 @@ class ProductRESTController extends FOSRestController
      */
     public function postAction(Request $request)
     {
-        $entity = new Product();
+        /**
+         * @var $em ApiEntityManager
+         */
+        $em = $this->getDoctrine()->getManager();
+        $entityClassName = $this->container->getParameter('karika.entity.product_class');
+        $entity = $em->createEntity($entityClassName, json_decode($request->getContent(), true));
         $form = $this->createForm(self::FORM, $entity, array("method" => $request->getMethod()));
-        $this->removeExtraFields($request, $form);
+        //$this->removeExtraFields($request, $form);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
             return $entity;
-        }
+        //}
 
         return FOSView::create(array('errors' => $form->getErrors()), Codes::HTTP_INTERNAL_SERVER_ERROR);
     }
