@@ -43,7 +43,9 @@ class ProductRESTController extends FOSRestController
     public function getAction(int $id)
     {
         try {
-            $entity = $this->container->get('karika.repository.product')->find($id);
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository($this->container->getParameter('karika.entity.product_class'))
+                ->find($id);
             if ($entity) {
                 return $entity;
             }
@@ -77,8 +79,9 @@ class ProductRESTController extends FOSRestController
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
 
             $em = $this->getDoctrine()->getManager();
-            //$entities = $em->getRepository('KarikaCoreBundle:Product')->findBy($filters, $order_by, $limit, $offset);
-            $entities = $this->container->get('karika.repository.product')->findBy($filters, $order_by, $limit, $offset);
+            $entities = $em->getRepository($this->container->getParameter('karika.entity.product_class'))
+                ->findBy($filters, $order_by, $limit, $offset);
+
             if ($entities) {
                 return $entities;
             }
