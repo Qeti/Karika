@@ -4,7 +4,6 @@ namespace Karika\CoreBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Karika\CoreBundle\Entity\Manager\ApiEntityManager;
-use Karika\CoreBundle\Entity\ProductSuperclass as Product;
 use Karika\CoreBundle\Form\ProductType;
 
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -37,6 +36,8 @@ class ProductRESTController extends FOSRestController
      * 
      * @View(serializerEnableMaxDepthChecks=true)
      *
+     * @param int $id
+     *
      * @return Response
      *
      */
@@ -44,8 +45,8 @@ class ProductRESTController extends FOSRestController
     {
         try {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository($this->container->getParameter('karika.entity.product_class'))
-                ->find($id);
+            $entityClassName = $this->container->getParameter('karika.entity.product_class');
+            $entity = $em->getRepository($entityClassName)->find($id);
             if ($entity) {
                 return $entity;
             }
@@ -54,6 +55,7 @@ class ProductRESTController extends FOSRestController
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
     /**
      * Get all Product entities.
      * 
@@ -63,7 +65,7 @@ class ProductRESTController extends FOSRestController
      *
      * @param ParamFetcherInterface $paramFetcher
      *
-     * @return Response
+     * @return array|FOSView
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="20", description="How many notes to return.")
@@ -91,6 +93,7 @@ class ProductRESTController extends FOSRestController
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
     /**
      * Create a Product entity.
      *
@@ -100,7 +103,7 @@ class ProductRESTController extends FOSRestController
      *
      * @param Request $request
      *
-     * @return Response
+     * @return object
      *
      */
     public function postAction(Request $request)
@@ -128,8 +131,11 @@ class ProductRESTController extends FOSRestController
             return $entity;
         }
 
-        return FOSView::create(array('errors' => $form->getErrors()), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        return FOSView::create([
+            'errors' => $form->getErrors()
+        ], Codes::HTTP_INTERNAL_SERVER_ERROR);
     }
+
     /**
      * Update a Product entity.
      *
@@ -138,18 +144,27 @@ class ProductRESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @param Request $request
-     * @param $entity
+     * @param int $id
      *
-     * @return Response
+     * @return object
      */
-    public function putAction(Request $request, Product $entity)
+    public function putAction(Request $request, int $id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
+            $entityClassName = $this->container->getParameter('karika.entity.product_class');
+
+            $entity = $em->getRepository($entityClassName)->find($id);
+
+            $data = json_decode($request->getContent(), true);
+
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
-            $form = $this->createForm(self::FORM, $entity, array("method" => $request->getMethod()));
-            $this->removeExtraFields($request, $form);
-            $form->handleRequest($request);
+            $form = $this->createForm(self::FORM, $entity, [
+                "method" => $request->getMethod(),
+            ]);
+
+            $form->submit($data);
+
             if ($form->isValid()) {
                 $em->flush();
 
@@ -170,29 +185,34 @@ class ProductRESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @param Request $request
-     * @param $entity
+     * @param int $id
      *
-     * @return Response
+     * @return object
      */
-    public function patchAction(Request $request, Product $entity)
+    public function patchAction(Request $request, int $id)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        return $this->putAction($request, $entity);
+        return $this->putAction($request, $id);
     }
+
     /**
      * Delete a Product entity.
+     *
+     * @ApiDoc
      *
      * @View(statusCode=204)
      *
      * @param Request $request
-     * @param $entity
+     * @param int $id
      *
-     * @return Response
+     * @return null|FOSView
      */
-    public function deleteAction(Request $request, Product $entity)
+    public function deleteAction(Request $request, int $id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
+            $entityClassName = $this->container->getParameter('karika.entity.product_class');
+
+            $entity = $em->getRepository($entityClassName)->find($id);
             $em->remove($entity);
             $em->flush();
 
