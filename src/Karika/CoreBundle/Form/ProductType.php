@@ -20,14 +20,4 @@ class ProductType extends AbstractType
             ->add('description')
         ;
     }
-
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Karika\ExampleBundle\Entity\Product'
-        ));
-    }
 }

@@ -110,18 +110,23 @@ class ProductRESTController extends FOSRestController
          */
         $em = $this->getDoctrine()->getManager();
         $entityClassName = $this->container->getParameter('karika.entity.product_class');
-        $entity = $em->createEntity($entityClassName, json_decode($request->getContent(), true));
-        $form = $this->createForm(self::FORM, $entity, array("method" => $request->getMethod()));
-        //$this->removeExtraFields($request, $form);
-        $form->handleRequest($request);
 
-        //if ($form->isValid()) {
+        $data = json_decode($request->getContent(), true);
+        $entity = $em->createEntity($entityClassName);
+
+        $form = $this->createForm(self::FORM, $entity, [
+            "method" => $request->getMethod(),
+        ]);
+
+        $form->submit($data);
+
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
             return $entity;
-        //}
+        }
 
         return FOSView::create(array('errors' => $form->getErrors()), Codes::HTTP_INTERNAL_SERVER_ERROR);
     }
