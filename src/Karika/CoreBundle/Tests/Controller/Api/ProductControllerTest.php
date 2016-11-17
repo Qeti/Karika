@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Karika\CoreBundle\Controller;
+namespace Tests\Karika\CoreBundle\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ProductRESTControllerTest extends WebTestCase
+class ProductControllerTest extends WebTestCase
 {
     public function testGet()
     {

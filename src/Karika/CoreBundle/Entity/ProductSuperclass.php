@@ -7,10 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
- *
- * @ORM\MappedSuperclass
  */
-class ProductSuperclass
+class ProductSuperclass extends AbstractEntitySuperclass
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Karika\CoreBundle\Controller;
+namespace Karika\CoreBundle\Controller\Api;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Karika\CoreBundle\Entity\Manager\ApiEntityManager;
@@ -18,16 +18,44 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Voryx\RESTGeneratorBundle\Controller\VoryxController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
- * Product controller.
- * @RouteResource("Product")
+ * Base controller for API.
  */
-class ProductRESTController extends FOSRestController
+abstract class ApiController extends FOSRestController
 {
-    const FORM = ProductType::class;
+    /**
+     * @var string Form class name for this controller
+     */
+    protected $formClassName;
+
+    /**
+     * Get Entity class name for this controller
+     *
+     * @return string
+     */
+    abstract protected function entityClassName(): string;
+
+    /**
+     * Get Form class name for this controller
+     *
+     * Override this method if necessary
+     *
+     * @return string
+     */
+    protected function formClassName(): string
+    {
+        if ($this->formClassName)
+        {
+            return $this->formClassName;
+        }
+
+        $entityClassName = $this->entityClassName();
+        $this->formClassName = substr(str_replace('/Form/', '/Entity/', $entityClassName), 0, -4);
+
+        return $this->formClassName;
+    }
 
     /**
      * Get a Product entity
@@ -38,15 +66,14 @@ class ProductRESTController extends FOSRestController
      *
      * @param int $id
      *
-     * @return Response
+     * @return FOSView|object
      *
      */
     public function getAction(int $id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
-            $entityClassName = $this->container->getParameter('karika.entity.product_class');
-            $entity = $em->getRepository($entityClassName)->find($id);
+            $entity = $em->getRepository($this->entityClassName())->find($id);
             if ($entity) {
                 return $entity;
             }
@@ -81,7 +108,7 @@ class ProductRESTController extends FOSRestController
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
 
             $em = $this->getDoctrine()->getManager();
-            $entities = $em->getRepository($this->container->getParameter('karika.entity.product_class'))
+            $entities = $em->getRepository($this->entityClassName())
                 ->findBy($filters, $order_by, $limit, $offset);
 
             if ($entities) {
@@ -112,12 +139,11 @@ class ProductRESTController extends FOSRestController
          * @var $em ApiEntityManager
          */
         $em = $this->getDoctrine()->getManager();
-        $entityClassName = $this->container->getParameter('karika.entity.product_class');
 
         $data = json_decode($request->getContent(), true);
-        $entity = $em->createEntity($entityClassName);
+        $entity = $em->createEntity($this->entityClassName());
 
-        $form = $this->createForm(self::FORM, $entity, [
+        $form = $this->createForm($this->formClassName(), $entity, [
             "method" => $request->getMethod(),
         ]);
 
@@ -152,14 +178,13 @@ class ProductRESTController extends FOSRestController
     {
         try {
             $em = $this->getDoctrine()->getManager();
-            $entityClassName = $this->container->getParameter('karika.entity.product_class');
 
-            $entity = $em->getRepository($entityClassName)->find($id);
+            $entity = $em->getRepository($this->entityClassName())->find($id);
 
             $data = json_decode($request->getContent(), true);
 
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
-            $form = $this->createForm(self::FORM, $entity, [
+            $form = $this->createForm($this->formClassName(), $entity, [
                 "method" => $request->getMethod(),
             ]);
 
@@ -210,9 +235,8 @@ class ProductRESTController extends FOSRestController
     {
         try {
             $em = $this->getDoctrine()->getManager();
-            $entityClassName = $this->container->getParameter('karika.entity.product_class');
 
-            $entity = $em->getRepository($entityClassName)->find($id);
+            $entity = $em->getRepository($this->entityClassName())->find($id);
             $em->remove($entity);
             $em->flush();
 
