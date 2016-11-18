@@ -1,15 +1,23 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "5.1.1",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
-  "keywords": [
-    "angular2",
-    "webpack",
-    "typescript"
-  ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "name": "karika",
+  "version": "1.0.1",
+  "description": "YA business automatisation system",
+  "author": "Matiushenkov Nikolay, Matiushenkov Igor",
   "license": "MIT",
+  "keywords": [
+    "karika",
+    "crm",
+    "business",
+    "bpm"
+  ],
+  "homepage": "https://qeti.github.io/Karika/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qeti/Karika.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qeti/Karika/issues"
+  },
   "scripts": {
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
@@ -132,13 +140,6 @@
     "webpack-dev-server": "2.1.0-beta.9",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "^0.15.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
   },
   "engines": {
     "node": ">= 4.2.1",
