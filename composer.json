@@ -2,7 +2,7 @@
     "name": "qeti/karika",
     "license": "MIT",
     "type": "project",
-    "description": "YA business automatisation system",
+    "description": "YA business automation system",
     "autoload": {
         "psr-4": { "": "src/" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
@@ -11,27 +11,36 @@
         "psr-4": { "Tests\\": "tests/" }
     },
     "require": {
-        "php": ">=5.5.9",
-        "symfony/symfony": "3.1.*",
-        "doctrine/orm": "^2.5",
+        "php": ">=7.0.0",
+
+        "ext-session": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*",
+
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
-        "symfony/swiftmailer-bundle": "^2.3",
-        "symfony/monolog-bundle": "^2.8",
+        "doctrine/doctrine-migrations-bundle": "^1.2",
+        "doctrine/orm": "^2.5",
+        "friendsofsymfony/oauth-server-bundle": "^1.5",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "incenteev/composer-parameter-handler": "^2.0",
+        "nelmio/api-doc-bundle": "^2.12",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0",
-        "incenteev/composer-parameter-handler": "^2.0",
         "symfony/console": "^3.1",
-        "voryx/restgeneratorbundle": "dev-master",
-        "friendsofsymfony/oauth-server-bundle": "^1.5",
-        "nelmio/api-doc-bundle": "^2.12",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
-        "doctrine/doctrine-migrations-bundle": "^1.2"
+        "symfony/monolog-bundle": "^2.8",
+        "symfony/symfony": "3.1.*",
+        "symfony/swiftmailer-bundle": "^2.3",
+        "friendsofsymfony/rest-bundle": "^2.1",
+        "nelmio/cors-bundle": "^1.4",
+        "jms/serializer-bundle": "^1.1"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^2.3",
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.1",
-        "doctrine/doctrine-fixtures-bundle": "^2.3"
+        "symfony/phpunit-bridge": "^3.1"
     },
     "scripts": {
         "post-install-cmd": [
@@ -50,11 +59,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
-    },
-    "config": {
-        "platform": {
-            "php": "5.5.9"
-        }
     },
     "extra": {
         "symfony-app-dir": "app",

@@ -97,11 +97,6 @@ nelmio_cors:
             allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'PATCH']
             max_age: 3600
 
-sensio_framework_extra:
-    request: { converters: true }
-    view:    { annotations: false }
-    router:  { annotations: true }
-
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
