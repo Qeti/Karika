@@ -40,6 +40,9 @@ import { AppState } from './app.service';
         <button md-button [routerLink]=" ['./detail'] ">
           Detail
         </button>
+        <button md-button [routerLink]=" ['./product'] ">
+          Product
+        </button>
         <button color="accent" md-raised-button [routerLink]=" ['./about'] ">
           About
         </button>
