@@ -24,7 +24,7 @@ console.log('`Product` component loaded asynchronously');
           placeholder="Submit Local State to App State"
           autofocus></md-input>
   
-        <button id="submit-button" md-raised-button color="accent">Submit Value</button>
+        <button id="submit-button" md-raised-button color="accent">Find</button>
       </form>
     </md-card>
     <md-card><pre>this.localState = {{ localState | json }}</pre></md-card>
