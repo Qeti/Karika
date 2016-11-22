@@ -56,7 +56,7 @@ module.exports = function (options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
-      path: helpers.root('web/build'),
+      path: helpers.root('../web/build'),
 
       /**
        * Specifies the name of each output file on disk.
@@ -142,7 +142,7 @@ module.exports = function (options) {
           tslint: {
             emitErrors: false,
             failOnHint: false,
-            resourcePath: 'src'
+            resourcePath: 'front/src'
           },
 
         }
@@ -166,7 +166,7 @@ module.exports = function (options) {
         aggregateTimeout: 300,
         poll: 1000
       },
-      outputPath: helpers.root('web/build')
+      outputPath: helpers.root('../web/build')
     },
 
     /*

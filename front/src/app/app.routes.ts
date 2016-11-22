@@ -13,7 +13,7 @@ export const ROUTES: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'product', component: ProductComponent },
   {
-    path: 'detail', loadChildren: () => System.import('./+detail').then((comp: any) => {
+    path: 'detail', loadChildren: () => System.import('./+detail/index').then((comp: any) => {
       return comp.default;
     })
     ,

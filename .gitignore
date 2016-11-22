@@ -64,18 +64,18 @@ npm-debug.log
 /coverage/
 
 # Typing #
-/src/typings/tsd/
+/front/src/typings/tsd/
 /typings/
 /tsd_typings/
 
 # Dist #
-/dist
+/front/dist
 /public/__build__/
-/src/*/__build__/
+/front/src/*/__build__/
 /__build__/**
 /public/dist/
-/src/*/dist/
-/dist/**
+/front/src/*/dist/
+/front/dist/**
 /.awcache
 .webpack.json
 

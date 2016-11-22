@@ -55,9 +55,9 @@ module.exports = function (options) {
      */
     entry: {
 
-      'polyfills': './src/polyfills.browser.ts',
-      'vendor': './src/vendor.browser.ts',
-      'main': './src/main.browser.ts'
+      'polyfills': './front/src/polyfills.browser.ts',
+      'vendor': './front/src/vendor.browser.ts',
+      'main': './front/src/main.browser.ts'
 
     },
 
@@ -76,7 +76,7 @@ module.exports = function (options) {
       extensions: ['.ts', '.js', '.json'],
 
       // An array of directory names to be resolved to the current directory
-      modules: [helpers.root('src'), 'node_modules'],
+      modules: [helpers.root('front/src'), 'node_modules'],
 
     },
 
@@ -139,7 +139,7 @@ module.exports = function (options) {
         {
           test: /\.html$/,
           loader: 'raw-loader',
-          exclude: [helpers.root('src/index.html')]
+          exclude: [helpers.root('front/src/index.html')]
         },
 
         /* File loader for supporting images, for example, in CSS files.
@@ -194,7 +194,7 @@ module.exports = function (options) {
       new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        helpers.root('src') // location of your src
+        helpers.root('front/src') // location of your src
       ),
 
       /*
@@ -206,10 +206,10 @@ module.exports = function (options) {
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
       new CopyWebpackPlugin([{
-        from: 'src/assets',
+        from: 'front/src/assets',
         to: 'assets',
       }, {
-        from: 'src/meta',
+        from: 'front/src/meta',
       }, ]),
 
 
@@ -222,7 +222,7 @@ module.exports = function (options) {
        * See: https://github.com/ampedandwired/html-webpack-plugin
        */
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
+        template: 'front/src/index.html',
         title: METADATA.title,
         chunksSortMode: 'dependency',
         metadata: METADATA,
