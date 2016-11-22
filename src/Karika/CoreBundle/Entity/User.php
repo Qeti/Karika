@@ -7,7 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Product
+ * User
  *
  * @ORM\MappedSuperclass
  * @ORM\Table(name="users")

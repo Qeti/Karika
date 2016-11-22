@@ -10,7 +10,6 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Request\ParamFetcherInterface;
-use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View as FOSView;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -77,9 +76,9 @@ abstract class ApiController extends FOSRestController
             if ($entity) {
                 return $entity;
             }
-            return FOSView::create('Not Found', Codes::HTTP_NO_CONTENT);
+            return FOSView::create('Not Found', Response::HTTP_NO_CONTENT);
         } catch (\Exception $e) {
-            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+            return FOSView::create($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -115,9 +114,9 @@ abstract class ApiController extends FOSRestController
                 return $entities;
             }
 
-            return FOSView::create('Not Found', Codes::HTTP_NO_CONTENT);
+            return FOSView::create('Not Found', Response::HTTP_NO_CONTENT);
         } catch (\Exception $e) {
-            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+            return FOSView::create($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -159,7 +158,7 @@ abstract class ApiController extends FOSRestController
 
         return FOSView::create([
             'errors' => $form->getErrors()
-        ], Codes::HTTP_INTERNAL_SERVER_ERROR);
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -196,9 +195,9 @@ abstract class ApiController extends FOSRestController
                 return $entity;
             }
 
-            return FOSView::create(array('errors' => $form->getErrors()), Codes::HTTP_INTERNAL_SERVER_ERROR);
+            return FOSView::create(array('errors' => $form->getErrors()), Response::HTTP_INTERNAL_SERVER_ERROR);
         } catch (\Exception $e) {
-            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+            return FOSView::create($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -242,7 +241,7 @@ abstract class ApiController extends FOSRestController
 
             return null;
         } catch (\Exception $e) {
-            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+            return FOSView::create($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }
