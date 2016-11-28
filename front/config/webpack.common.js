@@ -207,9 +207,9 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([{
         from: 'front/src/assets',
-        to: 'assets',
+        to: 'assets'
       }, {
-        from: 'front/src/meta',
+        from: 'front/src/meta'
       }, ]),
 
 
