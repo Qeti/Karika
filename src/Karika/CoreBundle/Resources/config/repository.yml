@@ -3,4 +3,4 @@ services:
     karika.repository.product:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
-        arguments: [%karika.entity.product_class%]
+        arguments: ["%karika.entity.product_class%"]
