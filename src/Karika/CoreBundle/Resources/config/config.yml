@@ -37,6 +37,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
 # Doctrine Configuration
 doctrine:
@@ -118,6 +120,13 @@ doctrine_migrations:
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
+
+lexik_form_filter:
+    listeners:
+        doctrine_orm: true
+        doctrine_dbal: false
+        doctrine_mongodb: false
+    force_case_insensitivity: false
 
 karika:
     entity:

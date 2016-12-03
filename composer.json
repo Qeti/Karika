@@ -35,7 +35,8 @@
         "symfony/swiftmailer-bundle": "^2.3",
         "friendsofsymfony/rest-bundle": "^2.1",
         "nelmio/cors-bundle": "^1.4",
-        "jms/serializer-bundle": "^1.1"
+        "jms/serializer-bundle": "^1.1",
+        "lexik/form-filter-bundle": "~5.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^2.3",
