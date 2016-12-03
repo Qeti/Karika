@@ -1,4 +1,4 @@
-karika_product_api:
-    resource: "@KarikaCoreBundle/Controller/Api/ProductController.php"
+karika_api:
+    resource: "@KarikaCoreBundle/Controller/Api/"
     type:   rest
     prefix:   /api
