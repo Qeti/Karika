@@ -19,46 +19,56 @@ import { AppState } from './app.service';
   <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
     <md-sidenav #sidenav [opened]="true" mode="side" layout-padding class="app-sidenav">
-      <h2><a [routerLink]=" ['./']"><img [src]="projectLogo" class="logo"></a> Karika</h2>
+      <h2><a [routerLink]=" ['./']"><img [src]="projectLogo" class="logo"> Karika</a></h2>
       <br/>
       <button md-raised-button class="md-raised md-primary" #mybutton (click)="sidenav.close()">Close</button>
     </md-sidenav>
 
-    <md-toolbar color="primary">
-      <button class="app-icon-button" (click)="sidenav.toggle()">
-        <i class="material-icons app-toolbar-menu">menu</i>
+    <md-toolbar>
+      <button md-icon-button (click)="sidenav.toggle()">
+        <md-icon>menu</md-icon>
       </button>
 
-      <button md-icon-button [md-menu-trigger-for]="menu">
-        <md-icon>more_vert</md-icon>
-      </button>
-
-      <md-menu #menu="mdMenu">
-        <button md-menu-item [routerLink]=" ['./'] "> Index </button>
-        <button md-menu-item [routerLink]=" ['./home'] ">
-          <md-icon> home </md-icon>
-          <span> Home </span>
-        </button>
-        <button md-menu-item disabled> Disabled option </button>
-      </md-menu>
       <span class="right">
-        <button md-button [routerLink]=" ['./'] ">
-          Index
-        </button>
-        <button md-button [routerLink]=" ['./home'] ">
-          Home
-        </button>
-        <button md-button [routerLink]=" ['./detail'] ">
-          Detail
-        </button>
-        <button md-button [routerLink]=" ['./product'] ">
+        <a md-button [routerLink]=" ['./about'] ">
+          Accounts
+        </a>
+        <a md-button [routerLink]=" ['./home'] ">
+          Sales
+        </a>
+        <a md-button [routerLink]=" ['./detail'] ">
+          Tasks
+        </a>
+        <a md-button [routerLink]=" ['./product'] ">
           Product
+        </a>
+        <button md-icon-button>
+          <md-icon>add</md-icon>
         </button>
-        <button color="accent" md-raised-button [routerLink]=" ['./about'] ">
-          About
-        </button>
-        <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
       </span>
+      
+      <span class="app-toolbar-filler"></span>
+
+      <button md-icon-button>
+        <md-icon>mail_outline</md-icon>
+      </button>
+      <button md-icon-button>
+        <md-icon>notifications_none</md-icon>
+      </button>
+      <button md-icon-button>
+        <md-icon>assignment</md-icon>
+      </button>
+
+      <span class="app-toolbar-separator"></span>
+      <a href="#"><img md-card-avatar src="https://source.unsplash.com/random/200x200"></a>&nbsp;<a href="#" class="md-body-2">mnv</a>
+      <span class="app-toolbar-separator"></span>
+
+      <button md-icon-button (click)="isDarkTheme = !isDarkTheme">
+        <md-icon>invert_colors</md-icon>
+      </button>
+      <button md-icon-button>
+        <md-icon>settings</md-icon>
+      </button>
     </md-toolbar>
 
     <div class="app-content">

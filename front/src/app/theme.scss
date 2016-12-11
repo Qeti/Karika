@@ -33,3 +33,12 @@ $theme: md-light-theme($primary, $accent);
 
   @include angular-material-theme($dark-theme);
 }
+
+md-toolbar a {
+  $foreground: map-get($theme, foreground);
+  color: md-color($foreground, text);
+}
+md-toolbar[color="primary"] a {
+  $background: map-get($theme, background);
+  color: md-color($background, app-bar);
+}
