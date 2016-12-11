@@ -1,4 +1,13 @@
+@import '~ng2-material/all';
 @import '~@angular/material/core/theming/all-theme';
+//@import "~ng2-material/core/style/mixins";
+//@import "~ng2-material/core/style/palette";
+//@import "~ng2-material/core/style/shadows";
+//@import "~ng2-material/core/style/structure";
+//@import "~ng2-material/core/style/typography";
+//@import "~ng2-material/core/style/layout";
+//@import "~ng2-material/core/style/variables";
+//@import '~ng2-material/core/style/default-theme';
 
 // NOTE: Theming is currently experimental and not yet publically released!
 
@@ -23,8 +32,4 @@ $theme: md-light-theme($primary, $accent);
   $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
   @include angular-material-theme($dark-theme);
-}
-
-body {
-  margin: 0;
 }

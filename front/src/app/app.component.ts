@@ -2,7 +2,6 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-
 import { AppState } from './app.service';
 
 /*
@@ -18,6 +17,13 @@ import { AppState } from './app.service';
   ],
   template: `
   <md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
+
+    <md-sidenav #left [opened]="true" mode="side" layout-padding>
+      <h2>Left Sidenav.</h2>
+      <br>
+      <button md-raised-button class="md-raised md-primary" #mybutton (click)="left.close()">Close</button>
+    </md-sidenav>
+
     <md-toolbar color="primary">
       <button md-icon-button [md-menu-trigger-for]="menu">
         <md-icon>more_vert</md-icon>
@@ -56,6 +62,25 @@ import { AppState } from './app.service';
 
     <md-card><pre class="app-state">this.appState.state = {{ appState.state | json }}</pre></md-card>
 
+    <md-card class="wide-card">
+      <md-data-table>
+        <thead>
+        <tr>
+          <th class="md-text-cell">Material</th>
+          <th>Quantity</th>
+          <th>Unit price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let material of materials">
+          <td class="md-text-cell">{{ material.name }}</td>
+          <td>{{ material.quantity }}</td>
+          <td>{{ material.price }}</td>
+        </tr>
+        </tbody>
+      </md-data-table>
+    </md-card>
+
     <footer>
       <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
       <div>
@@ -68,6 +93,12 @@ import { AppState } from './app.service';
   `
 })
 export class AppComponent {
+  materials: Array<any> = [
+    {'id': 1, 'name': 'Acrylic (Transparent)', 'quantity': '25', 'price': '$2.90'},
+    {'id': 2, 'name': 'Plywood (Birch)', 'quantity': '50', 'price': '$1.25'},
+    {'id': 3, 'name': 'Laminate (Gold on Blue)', 'quantity': '10', 'price': '$2.35'}
+  ];
+
   angularclassLogo = 'build/assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
