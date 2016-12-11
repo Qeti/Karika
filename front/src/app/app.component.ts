@@ -18,10 +18,35 @@ import { AppState } from './app.service';
   template: `
   <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
-    <md-sidenav #sidenav [opened]="true" mode="side" layout-padding class="app-sidenav">
-      <h2><a [routerLink]=" ['./']"><img [src]="projectLogo" class="logo"> Karika</a></h2>
-      <br/>
-      <button md-raised-button class="md-raised md-primary" #mybutton (click)="sidenav.close()">Close</button>
+    <md-sidenav #sidenav [opened]="true" mode="side" class="app-sidenav">
+      <md-toolbar>
+        <a [routerLink]=" ['./']"><img [src]="projectLogo" class="logo"></a>&nbsp;
+        <h2><a [routerLink]=" ['./']">Karika</a></h2>
+      </md-toolbar>
+      <md-list>
+        <md-list-item>
+          <md-input placeholder="Search"></md-input>
+        </md-list-item>
+
+        <h3 md-subheader>Dashboard</h3>
+        <md-list-item md-ink role="listitem">
+          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>timeline</md-icon> Sales</button>
+        </md-list-item>
+        <md-list-item md-ink role="listitem">
+          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>assessment</md-icon> KPI</button>
+        </md-list-item>
+
+        <h3 md-subheader>CRM</h3>
+        <md-list-item md-ink role="listitem">
+          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>account_balance</md-icon> Accounts</button>
+        </md-list-item>
+        <md-list-item>
+          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>account_box</md-icon> Contacts</button>
+        </md-list-item>
+        <md-list-item>
+          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>assignment</md-icon> Tasks</button>
+        </md-list-item>
+      </md-list>
     </md-sidenav>
 
     <md-toolbar>
