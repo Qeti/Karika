@@ -24,3 +24,7 @@ $theme: md-light-theme($primary, $accent);
 
   @include angular-material-theme($dark-theme);
 }
+
+body {
+  margin: 0;
+}

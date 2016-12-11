@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 /* Import material design module */
 import { MaterialModule } from '@angular/material';
+//import { MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS } from "ng2-material";
+//import { Ng2MaterialNodeModule } from 'ng2-material';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -53,6 +55,7 @@ type StoreType = {
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     MaterialModule.forRoot(),
+    //Ng2MaterialNodeModule.forRoot(),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
