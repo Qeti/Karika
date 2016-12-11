@@ -19,12 +19,6 @@ console.log('`About` component loaded asynchronously');
       <pre>npm run start:hmr</pre>
     </md-card>
     <hr>
-    <md-card>
-      <h3>
-        patrick@AngularClass.com
-      </h3>
-    </md-card>
-    <hr>
     <md-card><pre>this.localState = {{ localState | json }}</pre></md-card>
   `
 })

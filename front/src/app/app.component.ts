@@ -16,18 +16,23 @@ import { AppState } from './app.service';
     './theme.scss'
   ],
   template: `
-  <md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
+  <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
-    <md-sidenav #left [opened]="true" mode="side" layout-padding>
-      <h2>Left Sidenav.</h2>
-      <br>
-      <button md-raised-button class="md-raised md-primary" #mybutton (click)="left.close()">Close</button>
+    <md-sidenav #sidenav [opened]="true" mode="side" layout-padding class="app-sidenav">
+      <h2><a [routerLink]=" ['./']"><img [src]="projectLogo" class="logo"></a> Karika</h2>
+      <br/>
+      <button md-raised-button class="md-raised md-primary" #mybutton (click)="sidenav.close()">Close</button>
     </md-sidenav>
 
     <md-toolbar color="primary">
+      <button class="app-icon-button" (click)="sidenav.toggle()">
+        <i class="material-icons app-toolbar-menu">menu</i>
+      </button>
+
       <button md-icon-button [md-menu-trigger-for]="menu">
         <md-icon>more_vert</md-icon>
       </button>
+
       <md-menu #menu="mdMenu">
         <button md-menu-item [routerLink]=" ['./'] "> Index </button>
         <button md-menu-item [routerLink]=" ['./home'] ">
@@ -56,40 +61,43 @@ import { AppState } from './app.service';
       </span>
     </md-toolbar>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+    <div class="app-content">
+      
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+  
+      <md-card><pre class="app-state">this.appState.state = {{ appState.state | json }}</pre></md-card>
+  
+      <md-card class="wide-card">
+        <md-data-table>
+          <thead>
+          <tr>
+            <th class="md-text-cell">Material</th>
+            <th>Quantity</th>
+            <th>Unit price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let material of materials">
+            <td class="md-text-cell">{{ material.name }}</td>
+            <td>{{ material.quantity }}</td>
+            <td>{{ material.price }}</td>
+          </tr>
+          </tbody>
+        </md-data-table>
+      </md-card>
 
-    <md-card><pre class="app-state">this.appState.state = {{ appState.state | json }}</pre></md-card>
-
-    <md-card class="wide-card">
-      <md-data-table>
-        <thead>
-        <tr>
-          <th class="md-text-cell">Material</th>
-          <th>Quantity</th>
-          <th>Unit price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let material of materials">
-          <td class="md-text-cell">{{ material.name }}</td>
-          <td>{{ material.quantity }}</td>
-          <td>{{ material.price }}</td>
-        </tr>
-        </tbody>
-      </md-data-table>
-    </md-card>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-    </md-sidenav-layout>
+      <footer>
+        <a [href]="url"><img [src]="companyLogo" class="logo"></a>
+        <span>Karika by <a [href]="url">Qeti</a></span>
+      </footer>
+    </div>
+    
+  </md-sidenav-layout>
+  
+  <span class="app-action" [class.m2app-dark]="isDarkTheme">
+  </span>
   `
 })
 export class AppComponent {
@@ -99,9 +107,10 @@ export class AppComponent {
     {'id': 3, 'name': 'Laminate (Gold on Blue)', 'quantity': '10', 'price': '$2.35'}
   ];
 
-  angularclassLogo = 'build/assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+  companyLogo = 'build/assets/img/company-logo.jpg';
+  projectLogo = 'build/assets/img/project-logo.png';
+  name = 'Karika';
+  url = 'https://github.com/qeti';
 
   isDarkTheme: boolean = false;
 
@@ -115,11 +124,3 @@ export class AppComponent {
   }
 
 }
-
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */

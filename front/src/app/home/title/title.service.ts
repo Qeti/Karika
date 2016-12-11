@@ -13,7 +13,7 @@ export class Title {
     // return this.http.get('/assets/data.json')
     // .map(res => res.json());
     return {
-      value: 'AngularClass'
+      value: 'Karika'
     };
   }
 
