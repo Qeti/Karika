@@ -42,3 +42,16 @@ md-toolbar[color="primary"] a {
   $background: map-get($theme, background);
   color: md-color($background, app-bar);
 }
+
+// Customize components
+@mixin app-theme($theme) {
+  $data-table-font-size: rem(1.4);
+  $data-table-header-font-size: rem(1.4);
+  md-data-table, .md-data-table {
+    font-size: $data-table-font-size;
+    th {
+      font-size: $data-table-header-font-size;
+    }
+  }
+}
+@include app-theme($theme);
