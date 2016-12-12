@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 /* Import material design module */
 import { MaterialModule } from '@angular/material';
-import { MdDataTable } from 'ng2-material/components/data-table';
+import { MdDataTable, MdDataTableHeaderSelectableRow, MdDataTableSelectableRow } from 'ng2-material/components/data-table';
+import { MdPagination, MdPaginationItemsPerPage, MdPaginationRange, MdPaginationControls } from 'ng2-material/components/pagination';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -47,7 +48,8 @@ type StoreType = {
     HomeComponent,
     NoContentComponent,
     XLarge,
-    MdDataTable
+    MdDataTable, MdDataTableHeaderSelectableRow, MdDataTableSelectableRow,
+    MdPagination, MdPaginationItemsPerPage, MdPaginationRange, MdPaginationControls
   ],
   imports: [ // import Angular's modules
     BrowserModule,

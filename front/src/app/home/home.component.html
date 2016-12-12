@@ -1,49 +1,39 @@
-<div class="app-content"s>
-  <h1 x-large class="sample-content">Sample header</h1>
-  <md-card color="primary">
-    <md-card-title>Card with title</md-card-title>
-    <md-card-content>
-      For hot module reloading run
-      <pre>npm run start:hmr</pre>
-    </md-card-content>
-  </md-card>
-  <hr>
-  <md-card class="wide-card">
-    <md-card-subtitle>More info on Material Design</md-card-subtitle>
-    <md-card-content>
-      <ul>
-        <li><a href="https://github.com/angular/material2">Material2 repo</a></li>
-        <li><a href="https://github.com/angular/material2/blob/master/docs/theming.md">Theming (Note: theming is in beta)</a></li>
-        <li><a href="https://github.com/angular/material2/blob/master/docs/theming-your-components.md">Theming your components</a></li>
-        <li>For docs on specific components look in the folder for the component, eg: <a href="https://github.com/angular/material2/tree/master/src/lib/card">md-card folder</a></li>
-        <li><a href="https://github.com/jelbourn/material2-app">Example app</a></li>
-      </ul>
-    </md-card-content>
-  </md-card>
-  <div>
-    <h4>Local State</h4>
+<md-toolbar>
+  <span class="md-display-1">Accounts</span>
+  <span class="app-toolbar-separator"></span>
+  <button md-raised-button class="md-primary">New <md-icon>add</md-icon></button>
+</md-toolbar>
 
-    <md-card>
-      <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+<md-input placeholder="Name" autofocus></md-input>
+<md-input placeholder="Industry" autofocus></md-input>
+<md-input placeholder="Created" autofocus></md-input>
+<md-input placeholder="Manager" autofocus></md-input>
 
-      <md-input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus></md-input>
+<md-card class="data-table">
+  <md-data-table [selectable]="true" (onSelectableChange)="change($event)">
+    <thead>
+    <tr md-data-table-header-selectable-row>
+      <th class="md-text-cell">Name</th>
+      <th>Status</th>
+      <th>Contants</th>
+      <th>Manager</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of rows" md-data-table-selectable-row>
+      <td class="md-text-cell">{{ row.name }}</td>
+      <td class="md-text-cell">{{ row.status }}</td>
+      <td class="md-text-cell">{{ row.contacts }}</td>
+      <td class="md-text-cell">{{ row.manager }}</td>
+      <td><md-icon>edit</md-icon> <md-icon>delete</md-icon></td>
+    </tr>
+    </tbody>
+  </md-data-table>
 
-      <button id="submit-button" md-raised-button color="accent">Submit Value</button>
-    </form>
-    </md-card>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
-</div>
+  <md-toolbar color="accent" *ngIf="selection">
+    <span>{{count}} item{{count > 1 ? 's' : ''}} selected</span>
+    <span flex hide show-gt-md></span>
+    <span class="md-caption" hide show-gt-md>{{selection}}</span>
+  </md-toolbar>
+</md-card>

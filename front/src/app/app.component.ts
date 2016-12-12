@@ -55,10 +55,10 @@ import { AppState } from './app.service';
       </button>
 
       <span class="right">
-        <a md-button [routerLink]=" ['./about'] ">
+        <a md-button [routerLink]=" ['./home'] ">
           Accounts
         </a>
-        <a md-button [routerLink]=" ['./home'] ">
+        <a md-button [routerLink]=" ['./about'] ">
           Sales
         </a>
         <a md-button [routerLink]=" ['./detail'] ">
@@ -102,27 +102,6 @@ import { AppState } from './app.service';
         <router-outlet></router-outlet>
       </main>
   
-      <md-card><pre class="app-state">this.appState.state = {{ appState.state | json }}</pre></md-card>
-  
-      <md-card class="wide-card">
-        <md-data-table>
-          <thead>
-          <tr>
-            <th class="md-text-cell">Material</th>
-            <th>Quantity</th>
-            <th>Unit price</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let material of materials">
-            <td class="md-text-cell">{{ material.name }}</td>
-            <td>{{ material.quantity }}</td>
-            <td>{{ material.price }}</td>
-          </tr>
-          </tbody>
-        </md-data-table>
-      </md-card>
-
       <footer>
         <a [href]="url"><img [src]="companyLogo" class="logo"></a>
         <span>Karika by <a [href]="url">Qeti</a></span>
@@ -136,12 +115,6 @@ import { AppState } from './app.service';
   `
 })
 export class AppComponent {
-  materials: Array<any> = [
-    {'id': 1, 'name': 'Acrylic (Transparent)', 'quantity': '25', 'price': '$2.90'},
-    {'id': 2, 'name': 'Plywood (Birch)', 'quantity': '50', 'price': '$1.25'},
-    {'id': 3, 'name': 'Laminate (Gold on Blue)', 'quantity': '10', 'price': '$2.35'}
-  ];
-
   companyLogo = 'build/assets/img/company-logo.jpg';
   projectLogo = 'build/assets/img/project-logo.png';
   name = 'Karika';

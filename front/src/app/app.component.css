@@ -66,3 +66,13 @@ img.logo {
 md-sidenav h2 a {
   text-decoration: none;
 }
+
+.app-content md-toolbar {
+  background: none;
+  padding: 0;
+}
+
+md-card.data-table {
+  margin-left: 0;
+  margin-right: 0;
+}
