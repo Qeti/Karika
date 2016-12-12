@@ -46,13 +46,14 @@ export class HomeComponent {
     totalItems: 24
   };
   availableLength: Array<number> = [5, 10, 20];
+  pagedRows: Array<any> = [];
 
 
   // Set our default values
   localState = { value: '' };
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title) {
-
+    this.refreshMaterials();
   }
 
   ngOnInit() {
@@ -69,11 +70,24 @@ export class HomeComponent {
   change(data: ITableSelectionChange) {
     let names = [];
     this.rows.forEach((mat: any) => {
-      if (data.values.indexOf(mat.id) !== -1) {
+      if (data.values.indexOf(mat.id.toString()) !== -1) {
         names.push(mat.name);
       }
     });
     this.selection = names.join(', ');
     this.count = names.length;
   }
+
+  refreshMaterials() {
+    let start = (this.pagination.currentPage - 1) * this.pagination.itemsPerPage,
+      end = start + this.pagination.itemsPerPage;
+    this.pagedRows = this.rows.slice(start, end);
+  }
+  detectChange(event) {
+    if (event !== undefined && event.name === 'pagination_changed' && event.pagination !== undefined) {
+      this.pagination = event.pagination;
+      this.refreshMaterials();
+    }
+  }
+
 }

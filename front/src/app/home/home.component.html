@@ -4,19 +4,20 @@
   <button md-raised-button class="md-primary">New <md-icon>add</md-icon></button>
 </md-toolbar>
 
-<md-input placeholder="Name" autofocus></md-input>
-<md-input placeholder="Industry" autofocus></md-input>
-<md-input placeholder="Created" autofocus></md-input>
-<md-input placeholder="Manager" autofocus></md-input>
+<div class="filter">
+  <md-input placeholder="Industry" autofocus></md-input>
+  <md-input placeholder="Created" autofocus></md-input>
+  <button md-button>Filter <md-icon>filter_list</md-icon></button>
+</div>
 
 <md-card class="data-table">
-  <md-data-table [selectable]="true" (onSelectableChange)="change($event)">
+  <md-data-table [selectable]="true" [selectable]="true" (onSelectableChange)="change($event)">
     <thead>
     <tr md-data-table-header-selectable-row>
-      <th class="md-text-cell">Name</th>
-      <th>Status</th>
-      <th>Contants</th>
-      <th>Manager</th>
+      <th class="md-text-cell"><md-input placeholder="Name" autofocus></md-input></th>
+      <th class="md-text-cell">Status</th>
+      <th class="md-text-cell">Contants</th>
+      <th class="md-text-cell"><md-input placeholder="Manager" autofocus></md-input></th>
       <th></th>
     </tr>
     </thead>
@@ -31,9 +32,25 @@
     </tbody>
   </md-data-table>
 
-  <md-toolbar color="accent" *ngIf="selection">
+  <md-toolbar *ngIf="selection">
     <span>{{count}} item{{count > 1 ? 's' : ''}} selected</span>
     <span flex hide show-gt-md></span>
     <span class="md-caption" hide show-gt-md>{{selection}}</span>
   </md-toolbar>
+
+  <md-toolbar>
+    <button md-button [md-menu-trigger-for]="menu" *ngIf="selection">
+      Selected<md-icon>expand_more</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item><md-icon>print</md-icon> Print </button>
+      <button md-menu-item><md-icon>delete</md-icon> Delete</button>
+    </md-menu>
+
+    <span class="app-toolbar-filler"></span>
+
+    <md-pagination [model]="pagination" (on-pagination-change)="detectChange($event)"
+                   [items-per-page-options]="availableLength"></md-pagination>
+  </md-toolbar>
+
 </md-card>

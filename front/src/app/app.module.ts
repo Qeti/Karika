@@ -6,8 +6,7 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 /* Import material design module */
 import { MaterialModule } from '@angular/material';
-import { MdDataTable, MdDataTableHeaderSelectableRow, MdDataTableSelectableRow } from 'ng2-material/components/data-table';
-import { MdPagination, MdPaginationItemsPerPage, MdPaginationRange, MdPaginationControls } from 'ng2-material/components/pagination';
+import { Ng2MaterialModule } from 'ng2-material';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -48,8 +47,6 @@ type StoreType = {
     HomeComponent,
     NoContentComponent,
     XLarge,
-    MdDataTable, MdDataTableHeaderSelectableRow, MdDataTableSelectableRow,
-    MdPagination, MdPaginationItemsPerPage, MdPaginationRange, MdPaginationControls
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -57,10 +54,11 @@ type StoreType = {
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     MaterialModule.forRoot(),
+    Ng2MaterialModule.forRoot(),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
   ]
 })
 export class AppModule {
