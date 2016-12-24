@@ -23,6 +23,7 @@ export class HomeComponent {
   selection: string;
   count: number;
   rows: Array<any> = [
+    {'id': 0, 'name': 'АиФ', 'status': 'Active', 'contacts': 'info@aif.ru', 'manager': 'Gorinich K.B.'},
     {'id': 1, 'name': 'IBM', 'status': 'Perspective', 'contacts': 'info@ibm.com, +7(124)613-11-22', 'manager': 'Gorinich K.B.'},
     {'id': 2, 'name': 'АиФ', 'status': 'Active', 'contacts': 'info@aif.ru', 'manager': 'Gorinich K.B.'},
     {'id': 3, 'name': 'Hyndai Motors', 'status': 'Active', 'contacts': '', 'manager': 'Ded Moroz'},

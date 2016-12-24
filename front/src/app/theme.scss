@@ -51,6 +51,14 @@ md-toolbar[color="primary"] a {
     font-size: $data-table-font-size;
     th {
       font-size: $data-table-header-font-size;
+        .md-checkbox-inner-container {
+          margin: 0 !important;
+        }
+    }
+    td {
+      .md-checkbox-inner-container {
+        margin: 0 !important;
+      }
     }
   }
 }

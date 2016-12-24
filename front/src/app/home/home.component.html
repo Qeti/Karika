@@ -14,11 +14,11 @@
   <md-data-table [selectable]="true" [selectable]="true" (onSelectableChange)="change($event)">
     <thead>
     <tr md-data-table-header-selectable-row>
-      <th class="md-text-cell"><md-input placeholder="Name" autofocus></md-input></th>
-      <th class="md-text-cell">Status</th>
+      <th class="md-text-cell sortable"><md-input placeholder="Name" autofocus></md-input> <button md-icon-button><md-icon>arrow_drop_down</md-icon></button></th>
+      <th class="md-text-cell sortable">Status</th>
       <th class="md-text-cell">Contants</th>
-      <th class="md-text-cell"><md-input placeholder="Manager" autofocus></md-input></th>
-      <th></th>
+      <th class="md-text-cell sortable"><md-input placeholder="Manager" autofocus></md-input></th>
+      <th>&nbsp;</th>
     </tr>
     </thead>
     <tbody>
@@ -27,24 +27,26 @@
       <td class="md-text-cell">{{ row.status }}</td>
       <td class="md-text-cell">{{ row.contacts }}</td>
       <td class="md-text-cell">{{ row.manager }}</td>
-      <td><md-icon>edit</md-icon> <md-icon>delete</md-icon></td>
+      <td><button md-icon-button><md-icon>edit</md-icon></button></td>
     </tr>
     </tbody>
   </md-data-table>
 
   <md-toolbar *ngIf="selection">
-    <span>{{count}} item{{count > 1 ? 's' : ''}} selected</span>
+    <span class="md-body-1">{{count}} item{{count > 1 ? 's' : ''}} selected</span>
     <span flex hide show-gt-md></span>
     <span class="md-caption" hide show-gt-md>{{selection}}</span>
   </md-toolbar>
 
   <md-toolbar>
-    <button md-button [md-menu-trigger-for]="menu" *ngIf="selection">
+    <button md-raised-button class="md-primary" [md-menu-trigger-for]="menu" *ngIf="selection">
       Selected<md-icon>expand_more</md-icon>
     </button>
     <md-menu #menu="mdMenu">
+      <button md-menu-item><md-icon>mail_outline</md-icon> Email </button>
       <button md-menu-item><md-icon>print</md-icon> Print </button>
-      <button md-menu-item><md-icon>delete</md-icon> Delete</button>
+      <hr/>
+      <button md-menu-item (click)="confirmDelete.show()"><md-icon>delete</md-icon> Delete</button>
     </md-menu>
 
     <span class="app-toolbar-filler"></span>
@@ -52,5 +54,11 @@
     <md-pagination [model]="pagination" (on-pagination-change)="detectChange($event)"
                    [items-per-page-options]="availableLength"></md-pagination>
   </md-toolbar>
+
+  <md-dialog #confirmDelete>
+    <md-dialog-title>Delete?</md-dialog-title>
+    Are you sure?
+    <md-dialog-actions ok="Yes" cancel="Cancel"></md-dialog-actions>
+  </md-dialog>
 
 </md-card>
