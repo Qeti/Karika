@@ -18,6 +18,8 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import { EditComponent } from './home/edit';
+import { NewComponent } from './home/new';
 import { AboutComponent } from './about';
 import { ProductComponent } from './product';
 import { NoContentComponent } from './no-content';
@@ -45,6 +47,8 @@ type StoreType = {
     AboutComponent,
     ProductComponent,
     HomeComponent,
+    EditComponent,
+    NewComponent,
     NoContentComponent,
     XLarge,
   ],

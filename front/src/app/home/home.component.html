@@ -1,13 +1,13 @@
 <md-toolbar>
   <span class="md-display-1">Accounts</span>
   <span class="app-toolbar-separator"></span>
-  <button md-raised-button class="md-primary">New <md-icon>add</md-icon></button>
+  <button md-raised-button class="md-primary" [routerLink]="['./new']">New <md-icon>add</md-icon></button>
 </md-toolbar>
 
 <div class="filter">
   <md-input placeholder="Industry" autofocus></md-input>
   <md-input placeholder="Created" autofocus></md-input>
-  <button md-button>Filter <md-icon>filter_list</md-icon></button>
+  <button md-raised-button>Filter <md-icon>filter_list</md-icon></button>
 </div>
 
 <md-card class="data-table">
@@ -27,7 +27,7 @@
       <td class="md-text-cell">{{ row.status }}</td>
       <td class="md-text-cell">{{ row.contacts }}</td>
       <td class="md-text-cell">{{ row.manager }}</td>
-      <td><button md-icon-button><md-icon>edit</md-icon></button></td>
+      <td><button md-icon-button [routerLink]="['./edit/' + row.id]"><md-icon>edit</md-icon></button></td>
     </tr>
     </tbody>
   </md-data-table>
