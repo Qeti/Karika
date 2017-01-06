@@ -1,0 +1,16 @@
+  <md-card>
+    <md-input placeholder="Industry" autofocus></md-input>
+    <md-input placeholder="Created" autofocus></md-input>
+
+    <md-card-actions layout="row" layout-sm="column" layout-align="begin center">
+      <button md-raised-button class="md-raised md-primary" (click)="this.router.navigate(['/account'])">OK <md-icon>done</md-icon></button>
+      <button md-raised-button class="md-raised" (click)="confirmCancel.show()">Cancel <md-icon>close</md-icon></button>
+    </md-card-actions>
+
+    <md-dialog #confirmCancel (onClose)="this.router.navigate(['/account'])">
+      <md-dialog-title>Cancel</md-dialog-title>
+      Are you sure?
+      <md-dialog-actions ok="Yes, Cancel" cancel="Continue edit"></md-dialog-actions>
+    </md-dialog>
+
+  </md-card>

@@ -30,15 +30,15 @@ import { AppState } from './app.service';
 
         <h3 md-subheader>Dashboard</h3>
         <md-list-item md-ink role="listitem">
-          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>timeline</md-icon> Sales</button>
+          <button md-ripple md-button [routerLink]=" ['./dashboard/sales']"><md-icon>timeline</md-icon> Sales</button>
         </md-list-item>
         <md-list-item md-ink role="listitem">
-          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>assessment</md-icon> KPI</button>
+          <button md-ripple md-button [routerLink]=" ['./dashboard/kpi']"><md-icon>assessment</md-icon> KPI</button>
         </md-list-item>
 
         <h3 md-subheader>CRM</h3>
         <md-list-item md-ink role="listitem">
-          <button md-ripple md-button [routerLink]=" ['./']"><md-icon>account_balance</md-icon> Accounts</button>
+          <button md-ripple md-button [routerLink]=" ['./account']"><md-icon>account_balance</md-icon> Accounts</button>
         </md-list-item>
         <md-list-item>
           <button md-ripple md-button [routerLink]=" ['./']"><md-icon>account_box</md-icon> Contacts</button>
@@ -55,7 +55,7 @@ import { AppState } from './app.service';
       </button>
 
       <span class="right">
-        <a md-button [routerLink]=" ['./home'] ">
+        <a md-button [routerLink]=" ['./account'] ">
           Accounts
         </a>
         <a md-button [routerLink]=" ['./about'] ">
