@@ -19,12 +19,6 @@ console.log('`Product` component loaded asynchronously');
         <md-card>
             <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
       
-                <md-input
-                    [value]="localState.value"
-                    (input)="localState.value = $event.target.value"
-                    placeholder="Enter product price"
-                    autofocus></md-input>
-          
                 <button id="submit-button" md-raised-button color="accent">Find products</button>
             </form>
         </md-card>

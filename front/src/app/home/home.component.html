@@ -5,32 +5,10 @@
 </md-toolbar>
 
 <div class="filter">
-  <md-input placeholder="Industry" autofocus></md-input>
-  <md-input placeholder="Created" autofocus></md-input>
   <button md-raised-button>Filter <md-icon>filter_list</md-icon></button>
 </div>
 
 <md-card class="data-table">
-  <md-data-table [selectable]="true" [selectable]="true" (onSelectableChange)="change($event)">
-    <thead>
-    <tr md-data-table-header-selectable-row>
-      <th class="md-text-cell sortable"><md-input placeholder="Name" autofocus></md-input> <button md-icon-button><md-icon>arrow_drop_down</md-icon></button></th>
-      <th class="md-text-cell sortable">Status</th>
-      <th class="md-text-cell">Contants</th>
-      <th class="md-text-cell sortable"><md-input placeholder="Manager" autofocus></md-input></th>
-      <th>&nbsp;</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let row of rows" md-data-table-selectable-row>
-      <td class="md-text-cell">{{ row.name }}</td>
-      <td class="md-text-cell">{{ row.status }}</td>
-      <td class="md-text-cell">{{ row.contacts }}</td>
-      <td class="md-text-cell">{{ row.manager }}</td>
-      <td><button md-icon-button [routerLink]="['./edit/' + row.id]"><md-icon>edit</md-icon></button></td>
-    </tr>
-    </tbody>
-  </md-data-table>
 
   <md-toolbar *ngIf="selection">
     <span class="md-body-1">{{count}} item{{count > 1 ? 's' : ''}} selected</span>
@@ -54,11 +32,5 @@
     <md-pagination [model]="pagination" (on-pagination-change)="detectChange($event)"
                    [items-per-page-options]="availableLength"></md-pagination>
   </md-toolbar>
-
-  <md-dialog #confirmDelete>
-    <md-dialog-title>Delete?</md-dialog-title>
-    Are you sure?
-    <md-dialog-actions ok="Yes" cancel="Cancel"></md-dialog-actions>
-  </md-dialog>
 
 </md-card>

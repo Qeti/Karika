@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
-import { ITableSelectionChange } from 'ng2-material/components/data-table';
 
 @Component({
   // The selector is what angular internally uses
@@ -66,17 +65,6 @@ export class HomeComponent {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
-  }
-
-  change(data: ITableSelectionChange) {
-    let names = [];
-    this.rows.forEach((mat: any) => {
-      if (data.values.indexOf(mat.id.toString()) !== -1) {
-        names.push(mat.name);
-      }
-    });
-    this.selection = names.join(', ');
-    this.count = names.length;
   }
 
   refreshMaterials() {
