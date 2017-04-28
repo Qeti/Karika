@@ -16,7 +16,7 @@ import { AppState } from './app.service';
     './theme.scss'
   ],
   template: `
-  <md-sidenav-container [class.m2app-dark]="isDarkTheme">
+  <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
     <md-sidenav #sidenav [opened]="true" mode="side" class="app-sidenav">
       <md-toolbar>
@@ -108,7 +108,7 @@ import { AppState } from './app.service';
       </footer>
     </div>
     
-  </md-sidenav-container>
+  </md-sidenav-layout>
   
   <span class="app-action" [class.m2app-dark]="isDarkTheme">
   </span>
