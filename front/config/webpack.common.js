@@ -171,7 +171,8 @@ module.exports = function (options) {
        *
        * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
        */
-      new ForkCheckerPlugin(),
+      new ForkCheckerPlugin(), // removed in awesome-typescript-loader 3
+
       /*
        * Plugin: CommonsChunkPlugin
        * Description: Shares common code between the pages.
